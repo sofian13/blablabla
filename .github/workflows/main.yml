@@ -30,7 +30,7 @@ jobs:
             docker compose down 2>/dev/null || true
             docker stack rm myapp 2>/dev/null || true
 
-            # Initialiser Swarm si pas encore fait
+            # Initialiser Swarm si pas encore fait 
             docker swarm init 2>/dev/null || true
 
             # Créer le network overlay si pas encore fait
