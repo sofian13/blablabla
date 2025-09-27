@@ -28,7 +28,7 @@ jobs:
 
             # Arrêter les services actuels
             docker compose down 2>/dev/null || true
-            docker stack rm mylanding_app 2>/dev/null || true
+            docker stack rm mylanding_landing 2>/dev/null || true
 
             # Initialiser Swarm si pas encore fait 
             docker swarm init 2>/dev/null || true
@@ -42,4 +42,4 @@ jobs:
 
             # Vérifier le déploiement
             docker service ls
-            docker service ps mylanding_app --no-trunc
+            docker service ps mylanding_landing --no-trunc
