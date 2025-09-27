@@ -1,0 +1,45 @@
+name: Deploy to VPS with Docker Swarm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    environment: Adil_focus_hostinger_VPS
+
+    steps:
+      - name: Deploy to VPS with Docker Swarm
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.ADIL_FOCUS_HOSTINGER_VPS_HOST }}
+          username: ${{ secrets.ADIL_FOCUS_HOSTINGER_VPS_USERNAME }}
+          key: ${{ secrets.ADIL_FOCUS_HOSTINGER_VPS_SSH_PRIVATE_KEY }}
+          retries: 3
+          script: |
+            # Aller dans le répertoire projet
+            cd ${{ secrets.ADIL_FOCUS_HOSTINGER_VPS_PROJECT_DIR }}
+
+            # Pull les derniers changements
+            git pull origin main
+
+            # Arrêter les services actuels
+            docker compose down 2>/dev/null || true
+            docker stack rm myapp 2>/dev/null || true
+
+            # Initialiser Swarm si pas encore fait
+            docker swarm init 2>/dev/null || true
+
+            # Créer le network overlay si pas encore fait
+            docker network create -d overlay app-network 2>/dev/null || true
+
+            # Build et déployer avec Docker Swarm
+            docker build -t focus_landing:latest .
+            docker stack deploy -c app-stack.yml mylanding
+
+            # Vérifier le déploiement
+            docker service ls
+            docker service ps mylanding_app --no-trunc
