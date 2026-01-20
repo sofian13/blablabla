@@ -41,9 +41,13 @@ export default function Navbar() {
         "
       >
         {/* Logo */}
-        <div className="text-lg font-semibold tracking-tight text-white">
-          FOCUS
-        </div>
+<div className="flex items-center">
+  <img 
+    src="/66.png" 
+    alt="Focus Logo" 
+    className="h-14 w-auto object-contain" 
+  />
+</div>
 
         {/* Links */}
         <div className="hidden md:flex items-center gap-2">

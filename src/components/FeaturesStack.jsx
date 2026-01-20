@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
+import img1 from "../assets/image1.png";
+import img2 from "../assets/image2.jpg";
+import img3 from "../assets/image3.png";
+import img5 from "../assets/image5.png";
 
 const cards = [
   {
     id: "01",
     title: "D’un réseau engagé qui partage les mêmes ambitions",
     desc: "Rejoignez des entrepreneurs et créateurs animés par la même énergie que vous. Échangez idées, retours d’expérience et opportunités pour progresser ensemble.",
-    img: "https://focus-business.com/wp-content/uploads/2025/08/Capture-decran-2025-08-21-a-12.00.01-2.png",
+    img: img1,
     cta: "Rejoindre le réseau",
     link: "https://espace.focus-business.com/checkout",
   },
@@ -13,7 +17,7 @@ const cards = [
     id: "02",
     title: "De l’e-commerce, du branding, de l’IA et du digital",
     desc: "Chaque semaine, nous partageons des stratégies concrètes, des astuces pratiques et des analyses actuelles pour booster vos projets en ligne.",
-    img: "https://focus-business.com/wp-content/uploads/2025/07/100-1.jpg",
+    img: img2,
     cta: "Accéder aux cours",
     link: "https://espace.focus-business.com/checkout",
   },
@@ -21,7 +25,7 @@ const cards = [
     id: "03",
     title: "D’un accompagnement collectif pour progresser plus vite",
     desc: "Vous n’êtes plus seul : la force du groupe vous permet d’avancer avec plus de clarté et de confiance. Les questions des autres enrichissent votre parcours.",
-    img: "https://focus-business.com/wp-content/uploads/2025/08/Capture-decran-2025-08-21-a-11.48.30.png",
+    img: img3,
     cta: "Progresser avec nous",
     link: "https://espace.focus-business.com/checkout",
   },
@@ -29,7 +33,7 @@ const cards = [
     id: "04",
     title: "D’une communauté active accessible à tout moment",
     desc: "Un espace privé disponible 24/7 pour discuter, poser vos questions et créer des connexions réelles avec des profils variés : débutants motivés, entrepreneurs confirmés, experts.",
-    img: "https://focus-business.com/wp-content/uploads/2025/06/group-image-4.webp",
+    img: img3,
     cta: "Découvrir le salon",
     link: "https://discord.gg/Z8qWfPyYMY",
   },
@@ -37,7 +41,7 @@ const cards = [
     id: "05",
     title: "D’outils et de ressources pour structurer vos projets",
     desc: "Accédez à des modèles de business plans, checklists, templates et documents stratégiques pour mettre en place des actions concrètes immédiatement.",
-    img: "https://focus-business.com/wp-content/uploads/2025/08/carta.png",
+    img: img5,
     cta: "Télécharger les outils",
     link: "https://espace.focus-business.com/checkout",
   },

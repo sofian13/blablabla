@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import focusBanniere from "../assets/focus-banniere.png";
 
 export default function Hero() {
   const checkoutLink = "https://espace.focus-business.com/checkout";
@@ -58,14 +59,17 @@ export default function Hero() {
         </div>
 
         {/* Mockup */}
-        <div className="mt-28 w-full max-w-6xl relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-[100px] rounded-full" />
-          <img
-            src="https://focus-business.com/wp-content/uploads/2025/08/mockup-community.png"
-            alt="Mockup Focus"
-            className="relative z-10 w-full rounded-[32px] border border-white/5 shadow-2xl"
-          />
-        </div>
+<div className="mt-16 w-full max-w-6xl relative group"> 
+  {/* Halo lumineux Bleu Ciel autour de l'image */}
+  <div className="absolute -inset-1 bg-sky-400/30 blur-[120px] rounded-full opacity-100 transition-opacity duration-500" />
+  
+  {/* L'image remontée */}
+  <img
+    src={focusBanniere}
+    alt="Focus Plateforme"
+    className="relative z-10 w-full rounded-[32px] border border-sky-400/20 shadow-[0_0_50px_rgba(56,189,248,0.2)] object-cover"
+  />
+</div>
 
       </div>
     </section>
