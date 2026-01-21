@@ -1607,8 +1607,7 @@ wp.i18n.setLocaleData( { 'text directionltr': [ 'ltr' ] } );
   
 })();
 </script>
-<!-- ===== Custom chat button (ONLY index.html) ===== -->
-<!-- ===== Custom chat button (ONLY index.html) ===== -->
+<!-- ===== Custom chat button ===== -->
 <button id="chat-btn" type="button" aria-label="Ouvrir le chat"
   style="
     position:fixed; right:18px; bottom:18px; width:64px; height:64px;
@@ -1622,22 +1621,36 @@ wp.i18n.setLocaleData( { 'text directionltr': [ 'ltr' ] } );
 </button>
 
 <script type="text/javascript">
-  // API Tawk (déclarée UNE SEULE FOIS)
-  var Tawk_API = Tawk_API || {};
-  var Tawk_LoadStart = new Date();
+  // Déclarer UNE fois
+  window.Tawk_API = window.Tawk_API || {};
+  window.Tawk_LoadStart = new Date();
 
-  // Quand Tawk est prêt : on cache leur launcher
-  Tawk_API.onLoad = function () {
-    Tawk_API.hideWidget();
+  // Optionnel : cacher le launcher Tawk quand il est prêt
+  window.Tawk_API.onLoad = function () {
+    try { window.Tawk_API.hideWidget(); } catch (e) {}
   };
 
-  // Ton bouton ouvre le chat
-  document.getElementById('chat-btn').addEventListener('click', function () {
-    Tawk_API.showWidget();
-    Tawk_API.maximize();
+  // Fonction "ouvre le chat" ultra tolérante
+  function openTawkChat() {
+    const api = window.Tawk_API;
+
+    // si l’API n’est pas encore prête, on réessaie vite
+    if (!api || (typeof api.maximize !== "function" && typeof api.toggle !== "function")) {
+      // petit retry (Tawk charge async)
+      setTimeout(openTawkChat, 250);
+      return;
+    }
+
+    try { api.showWidget && api.showWidget(); } catch (e) {}
+    try { api.maximize && api.maximize(); return; } catch (e) {}
+    try { api.toggle && api.toggle(); } catch (e) {}
+  }
+
+  document.getElementById("chat-btn").addEventListener("click", function () {
+    openTawkChat();
   });
 
-  // Embed Tawk (UNE SEULE FOIS)
+  // Embed Tawk (UNE fois)
   (function(){
     var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
     s1.async=true;
@@ -1648,6 +1661,7 @@ wp.i18n.setLocaleData( { 'text directionltr': [ 'ltr' ] } );
   })();
 </script>
 <!-- ===== /Custom chat button ===== -->
+
 
 	</body>
 
